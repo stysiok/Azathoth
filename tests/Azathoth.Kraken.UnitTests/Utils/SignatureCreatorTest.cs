@@ -11,7 +11,7 @@ namespace Azathoth.Kraken.UnitTests.Utils
     public class SignatureCreatorTests
     {
         [Fact]
-        public void SignatureCreator_ValidSignature()
+        public void SignatureCreator_creates_valid_signature()
         {
             const string EXPECTED_SIGNATURE = "4/dpxb3iT4tp/ZCVEwSnEsLxx0bqyhLpdfOpc6fn7OR8+UClSV5n9E6aSS8MPtnRfp32bAb0nmbRn6H8ndwLUQ==";
             var signatureCreator = new SignatureCreator();

@@ -7,7 +7,6 @@ namespace Azathoth.Kraken.Client
 {
     public class KrakenHttpClient : BaseKrakenHttpClient, IKrakenHttpClient
     {
-        private readonly HttpClient _client;
 
         public KrakenHttpClient(HttpClient client) : base(client)
         {

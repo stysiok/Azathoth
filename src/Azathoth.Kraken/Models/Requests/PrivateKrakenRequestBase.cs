@@ -3,14 +3,14 @@ using Newtonsoft.Json;
 
 namespace Azathoth.Kraken.Models.Requests
 {
-    public abstract class PrivateKrakenRequest
+    public class PrivateKrakenRequestBase
     {
         [JsonProperty("nonce")]
         public virtual long Nonce { get; private set; }
 
-        public PrivateKrakenRequest()
+        public PrivateKrakenRequestBase()
         {
-            Nonce = DateTimeOffset.Now.ToUnixTimeSeconds();
+            Nonce = DateTimeOffset.Now.ToUnixTimeMilliseconds();
         }
     }
 }
