@@ -4,6 +4,6 @@ namespace Azathoth.Kraken.Utils
 {
     public interface ISignatureCreator
     {
-        string CreateSignature(string pathname, string urlParams, long nonce, string secret);
+        string CreateSignature<T>(string pathname, string secret, T request) where T : PrivateKrakenRequestBase;
     }
 }

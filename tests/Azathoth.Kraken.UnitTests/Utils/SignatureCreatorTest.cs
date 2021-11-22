@@ -1,9 +1,5 @@
-using System.Net.Http;
-using System.Threading.Tasks;
-using Azathoth.Kraken.Client;
 using Azathoth.Kraken.Models.Requests;
 using Azathoth.Kraken.Utils;
-using Moq;
 using Xunit;
 
 namespace Azathoth.Kraken.UnitTests.Utils
@@ -17,11 +13,20 @@ namespace Azathoth.Kraken.UnitTests.Utils
             var signatureCreator = new SignatureCreator();
             
             var signature = signatureCreator.CreateSignature("/0/private/AddOrder", 
-                "nonce=1616492376594&ordertype=limit&pair=XBTUSD&price=37500&type=buy&volume=1.25", 
-                1616492376594, 
-                "kQH5HW/8p1uGOVjbgWA7FunAmGO8lsSUXNsu3eow76sz84Q18fWxnyRzBHCd3pd5nE9qa99HAZtuZuj6F1huXg==");
+                "kQH5HW/8p1uGOVjbgWA7FunAmGO8lsSUXNsu3eow76sz84Q18fWxnyRzBHCd3pd5nE9qa99HAZtuZuj6F1huXg==",
+                new FakePrivateRequest());
 
             Assert.Equal(EXPECTED_SIGNATURE, signature);
         }
+    }
+
+    record FakePrivateRequest : PrivateKrakenRequestBase
+    {
+        public override long Nonce => 1616492376594;
+        public string OrderType => "limit";
+        public string Pair => "XBTUSD";
+        public int Price => 37500;
+        public string Type => "buy";
+        public double Volume => 1.25d;
     }
 }

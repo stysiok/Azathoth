@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Azathoth.Kraken.Models.Requests
 {
-    public class PrivateKrakenRequestBase
+    public record PrivateKrakenRequestBase : IKrakenRequestBase
     {
         [JsonProperty("nonce")]
         public virtual long Nonce { get; private set; }
